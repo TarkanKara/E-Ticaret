@@ -7,9 +7,8 @@
 						<div class="title-widget">Twitter Güncellemeleri</div>
 					</div>
 					<ul class="tweets">
-						<li>Check out this great #themeforest item for you
-						'Simpler Landing' <a href="#">http://t.co/LbLwldb6 </a>
-						<span>2 hours ago</span></li>
+						<li>*****</a>
+						<span>****</span></li>
 						
 					</ul>
 					<div class="clearfix"></div>

@@ -43,8 +43,8 @@ if (isset($_POST['kullanicikaydet'])) {
 	$kullanici_adsoyad=htmlspecialchars($_POST['kullanici_adsoyad']);  
 	$kullanici_mail=htmlspecialchars($_POST['kullanici_mail']); 
 
-	$kullanici_passwordone=md5($_POST['kullanici_passwordone']); 
-	$kullanici_passwordtwo=md5($_POST['kullanici_passwordtwo']); 
+	$kullanici_passwordone=($_POST['kullanici_passwordone']); 
+	$kullanici_passwordtwo=($_POST['kullanici_passwordtwo']); 
 
 
 	if ($kullanici_passwordone==$kullanici_passwordtwo) 
@@ -399,11 +399,12 @@ if (isset($_POST['admingiris'])) {
 	$kullanici_mail=$_POST['kullanici_mail'];
 	$kullanici_password=($_POST['kullanici_password']);
 
-	$kullanicisor=$db->prepare("SELECT * FROM kullanici where kullanici_mail=:mail and kullanici_password=:password and kullanici_yetki=:yetki");
+	$kullanicisor=$db->prepare("SELECT * FROM kullanici where kullanici_mail=:mail and kullanici_password=:password AND kullanici_yetki=:yetki ");
 	$kullanicisor->execute(array(
 		'mail'     => $kullanici_mail,
 		'password' => $kullanici_password,
-		'yetki'    => 0
+		'yetki'    => 1
+		
 	));
 
 	echo $say=$kullanicisor->rowCount();

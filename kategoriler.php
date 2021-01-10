@@ -29,7 +29,7 @@ include 'header.php';
 		<div class="row prdct"><!--Products-->
 
 
-			<?php
+			<?php 
 
                      $sayfada = 3;                  // sayfada gösterilecek içerik miktarını belirtiyoruz.
                      $sorgu=$db->prepare("select * from kategori");

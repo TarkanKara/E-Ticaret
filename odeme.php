@@ -145,44 +145,55 @@
 
 
 			<div id="myTabContent" class="tab-content shop-tab-ct">
-
+				<!--
 				<div class="tab-pane fade active in" id="kredikartentegrasyon">
 					<p>
 						Entegrasyon Tammamlandı
 					</p>
 				</div>
-
-				<div class="tab-pane fade" id="bankahavale">
-
+			-->
+			<div class="tab-pane fade active in" id="kredikartentegrasyon">
+				<div class="row">
 					
+					<?php include 'iyzico/buyer.php'; ?>
 
-					<p><b>Ödeme Yapacağınız Banka IBANI seçerek ödeme işlemini Tamamlayınız...</b></p>
+					<div  id="iyzipay-checkout-form" class="responsive"></div>
 
-					<?php 
-
-					$bankasor=$db->prepare("SELECT * FROM banka ORDER BY banka_id ASC");
-					$bankasor->execute();
-
-					while($bankacek=$bankasor->fetch(PDO::FETCH_ASSOC)) { ?>
-
-
-						<input type="radio" name="siparis_banka" value="<?php echo $bankacek['banka_ad'] ?>">
-						<?php echo $bankacek['banka_ad']; echo " ";?><br><br><?php echo $bankacek['banka_iban'];?><hr>	
-
-					<?php } ?>
-
-					<input type="hidden" name="kullanici_id" value="<?php echo $kullanicicek['kullanici_id'] ?>">
-					<input type="hidden" name="siparis_toplam" value="<?php echo $toplam_fiyat+$kdv ?>">
-
-					<button class="btn btn-success" type="submit" name="bankasiparisekle">Sipariş Ver</button>
 					
 				</div>
-
 			</div>
+
+			<div class="tab-pane fade" id="bankahavale">
+
+				
+
+				<p><b>Ödeme Yapacağınız Banka IBANI seçerek ödeme işlemini Tamamlayınız...</b></p>
+
+				<?php 
+
+				$bankasor=$db->prepare("SELECT * FROM banka ORDER BY banka_id ASC");
+				$bankasor->execute();
+
+				while($bankacek=$bankasor->fetch(PDO::FETCH_ASSOC)) { ?>
+
+
+					<input type="radio" name="siparis_banka" value="<?php echo $bankacek['banka_ad'] ?>">
+					<?php echo $bankacek['banka_ad']; echo " ";?><br><br><?php echo $bankacek['banka_iban'];?><hr>	
+
+				<?php } ?>
+
+				<input type="hidden" name="kullanici_id" value="<?php echo $kullanicicek['kullanici_id'] ?>">
+				<input type="hidden" name="siparis_toplam" value="<?php echo $toplam_fiyat+$kdv ?>">
+
+				<button class="btn btn-success" type="submit" name="bankasiparisekle">Sipariş Ver</button>
+				
+			</div>
+
 		</div>
-
-
-		<div class="spacer"></div>
 	</div>
+
+
+	<div class="spacer"></div>
+</div>
 </form>
 <?php include 'footer.php'; ?>
